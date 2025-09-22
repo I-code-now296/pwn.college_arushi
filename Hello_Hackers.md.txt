@@ -1,0 +1,33 @@
+Module Name: Hello Hackers
+
+1)Challenge 1: Intro to commands
+### Description: To invoke the hello command to get the flag.
+### Solve: I wrote the hello command and pressed enter key. Subsequently I got the flag. 
+### Flag: pwn.college{kEyLggKVVBtfap9wMWpwjSta_My.QX3YjM1wyM3AzNzEzW}
+‘’’bash
+hello
+‘’’
+### New Learning: I learnt how to use command line and enter my first command. 
+### references: none 
+
+
+2)Challenge 2: Intro to Arguments
+### Description: To understand what an argument (addition data along with command) is and to execute it with a command- hello hackers. 
+### Solve: I wrote the hello command with the argument hackers and pressed enter key. Subsequently I got the flag. 
+### Flag: pwn.college{EekiQ4-W19l4RtBOO5XSa3xftt_.QX4YjM1wyM3AzNzEzW}
+‘’’bash
+hello hackers
+‘’’
+### New Learning: I learnt what at argument is. 
+### references: none 
+
+
+3)Challenge 3: Command history 
+### Description: To access old commands pressing arrow marks (up and down). 
+### Solve: I pressed the up arrow buttons and realized I could access older commands without having to retype them. 
+### pwn.college{g-P5spWupgtl1pnU2sByxSiIk8R.0lNzEzNxwyM3AzNzEzW}
+‘’’bash
+hacker@hello~command-history:~
+‘’’
+### New Learning: I learnt that I can access history and reduce the number of commands I need top type in, thereby drastically increases efficiency. 
+### references: none 
