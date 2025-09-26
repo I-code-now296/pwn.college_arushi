@@ -1,4 +1,4 @@
-#Comprehending Commands
+# Comprehending Commands
 
 ## 1. cat: not the pet but the command!
  
@@ -100,6 +100,7 @@ hacker@commands~comparing-files:/challenge$ diff decoys_only.txt decoys_and_real
 ### New Learnings: I learnt what a diff command is and what is the use of it.
 
 ### References : NA
+
 
 
 
