@@ -317,6 +317,47 @@ pwn.college{E4sIktrA1HkphijoPV0SAXinywZ.QXxMDO0wyM3AzNzEzW}
  
 ### New Learnings: I learnt how to make a directory.
 
-### References : NA
+### References : Information given in challenge. 
+
+
+# finding files
+The challenge asks me to find all the files in directory, then find flag file inside it
+
+## My solve
+**Flag:** `pwn.college{Up6F8g4F_OkiHEFlS7CEp8KS8en.QXyMDO0wSO2EzNzEzW}`
+
+- First I ran `find / -name flag`
+- I got a file and used cat to read it
+- This gave me the flag
+
+## What I learned
+- I learned to find files inside a directory
+- How to find all files in /
+- How to use -name to specify file name
+
+## References : 
+information given in challenge
+---
+
+# linking files
+To use symlinking to execute a file
+
+## My solve
+**Flag:** `pwn.college{gVpo2Xgwx0a5-Zdn3D5XnX4KO-Y.QX5ETN1wyM3AzNzEzW}`
+I cd'd to /home/hacker. There I created symbolic link named not-the-flag to refer to flag file. Thus catflag tried to read /home/hacker/not-the-flag; a symbolic link to the /flag.
+
+```bash
+hacker@commands~linking-files:~$ cd /home/hacker
+hacker@commands~linking-files:~$ ln -s /flag not-the-flag
+hacker@commands~linking-files:~$ /challenge/catflag
+About to read out the /home/hacker/not-the-flag file!
+pwn.college{gVpo2Xgwx0a5-Zdn3D5XnX4KO-Y.QX5ETN1wyM3AzNzEzW}
+```
+## What I learned
+- I learnt how to use symlink
+- I also learnt difference between soft and hardlink
+
+## References 
+ I referred given video andtext in challenge
 
 
