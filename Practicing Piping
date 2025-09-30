@@ -1,0 +1,239 @@
+# 1. Redirecting output
+The challenge asks me to write the word `PWN` in `COLLEGE` using `>` operator
+
+## My solve
+**Flag:** `pwn.college{c1-Kfg4alBplfLGseI4LRUzw9yR.QX0YTN0wyM3AzNzEzW}`
+
+I used `echo PWN > COLLEGE` following the syntax given. This appended the word `PWN` to `COLLEGE`.
+
+## What I learned
+- I learnt how to add stdout in a file
+- I learnt I can use `>` to directly add output in any file I want
+
+## References 
+Referred text given in challenge
+
+---
+
+# 2. Redirecting more output
+The challenge asks me to append `stdout` of `/challenge/run` in `myflag`
+
+## My solve
+**Flag:** `pwn.college{sW2Hbhn4Rtb8vEWtss9FnKlhlvn.QX1YTN0wyM3AzNzEzW}`
+
+- I typed `/challenge/run > myflag` as indicated. I then used cat to read  `myflag` get the flag stored in it from command. 
+
+## What I learned
+I learnt how to again append output of a command into another file
+
+## References 
+Referred text given in challenge
+
+---
+
+# 3. Appending output
+Challenge asks me to use `>>` instead of `>` to append (and not rewrite!) first and second half of the flag in same file.
+
+## My solve
+**Flag:** `pwn.college{o-fCzD4xpEao9NpKwEZQxtx3HTp.QX3ATO0wyM3AzNzEzW}`
+
+I wrote `/challenge/run >> /home/hacker/the-flag` twice, thus writing both first and second half of the flag. Then I cat'd the flag to get the flag. 
+
+## What I learned
+- I learnt how to use `>>` to append multiple `stdout` in same file
+- This helped me to avoid overwriting of my file, which would've happened if I used `>`
+
+## References 
+Referred text given in challenge
+
+---
+
+# 4. Redirecting errors
+The challenge asks to redirect output and errors in two different files
+
+## My solve
+**Flag:** `pwn.college{09RDeC7kXIEdhs134vzljMBY_W_.QX3YTN0wyM3AzNzEzW}`
+
+To copy the stdout I used 1> and to copy the standard error, I used 2> ; Thus I wrote
+ `/challenge/run 1> myflag 2> instructions`
+This redirected output to myflag and error to instructions. I then cat'd myflag to get the flag. 
+
+## What I learned
+- I learnt how to seperate `stdout` and `stderr` and redirect them to seperate files
+- I also learnt how I can use `1>` specifically for `stdout` and `2>` for `stderr`
+
+## References 
+Referred text given in challenge
+
+---
+
+# 5. Redirecting input
+The challenge asks me to first add value `COLLEGE` to file `PWN`. Then input `PWN` file to `/challenge/run`
+
+## My solve
+**Flag:** `pwn.college{Mc1Wdnpwc20Pm7NPM4wNmlADAQq.QXwcTN0wyM3AzNzEzW`
+
+```bash
+hacker@piping~redirecting-input:~$ echo COLLEGE > PWN
+hacker@piping~redirecting-input:~$ /challenge/run < PWN
+pwn.college{Mc1Wdnpwc20Pm7NPM4wNmlADAQq.QXwcTN0wyM3AzNzEzW}
+```
+This gave me the flag
+
+## What I learned
+- I revised how to redirect again
+- I also learnt how to input from a file
+
+## References 
+Referred text given in challenge
+
+---
+
+# 6. Grepping stored results
+Challenge asks to redirect output, then use grep to get the flag from output
+
+## My solve
+**Flag:** `pwn.college{sds69UZDHetQp59mHrR3An-HPZE.QX4EDO0wyM3AzNzEzW}`
+
+I wrote `/challenge/run > /tmp/data.txt `. This gave me a success
+Then I typed:
+`hacker@piping~grepping-stored-results:~$ grep "pwn.college" /tmp/data.txt`
+This gave me the flag
+
+## What I learned
+- I revised grep and redirection of `stdout`
+
+## References 
+Referred text given in challenge
+
+---
+
+# 7. Grepping live output
+Challenge asks me to use grep on a live output. This is done using ` | ` pipe which passes `stdout` to another command - i.e. grep.
+
+## My solve
+**Flag:** `pwn.college{4t7O9bYoJiB_bfF6voggTemoTuE.QX5EDO0wyM3AzNzEzW}`
+
+I wrote `/challenge/run | grep pwn.college` to pass the output to a grep command as input.
+This checked for flag in output, and gave me the string with flag
+
+## What I learned
+- I learnt how to use `|` (pipe) to redirect `stdout` to command.
+- I also learnt how to use any command on live output (especially grep)
+
+## References 
+Referred text given in challenge
+
+---
+
+# 8. Grepping errors
+The challenge asks me to grep from live errors. This can't be done directly, so I am asked to redirect errors to output and pipe to use grep 
+
+## My solve
+**Flag:** `pwn.college{o4xOEBeR8pniIRYE0dRng9Y7E-u.QX1ATO0wyM3AzNzEzW}`
+
+I wrote 
+` /challenge/run 2>&1 | grep pwn.college`
+This first redirected `stderr` to `stdout`. Then `|` made this output to input for grep. This gave me the flag
+
+## What I learned
+- I learnt how to use use `&` to convert `stderr` to `stdout`
+- I also learnt that `|` only works for output and not errors, so we have to convert everything to use it properly
+
+## References 
+Referred text given in challenge
+
+---
+
+# 9. Filtering with grep -v
+The challenge asks me to use `grep` with flag `-v` to exlude particular characters, and output only strings without those characters
+
+## My solve
+**Flag:** `pwn.college{EHJBBVTbzZcLFcnFQQcmRW_IYRi.0FOxEzNxwyM3AzNzEzW}`
+
+I wrote `/challenge/run | grep -v DECOY`. This grepped live output, and `-v` flag omitted results which had `DECOY` in the string.
+
+## What I learned
+- I learnt the usage of `-v` with grep and how to omit strings using it
+
+## References 
+Referred text given in challenge
+
+---
+
+# 10. Duplicating piped data with tee
+TASK: ' /challenge/pwn must be piped into /challenge/college, but it is needed to intercept the data. 
+
+## My solve
+**Flag:** `pwn.college{QsBd7jgWSlEGqzMgp2n37zdEs0m.QXxITO0wyM3AzNzEzW}`
+I did 
+`/challenge/pwn | tee f | /challenge/college`
+It told me that correct secret code wasn't used with command as `Usage: /challenge/pwn --secret [SECRET_ARG]`. 
+I then read the file I tee'd to using cat and got a secret code to use with the commamnd which then gave me the flag. 
+
+
+## What I learned
+- I learnt how to use `tee` to get multiple redirections
+- This makes debugging much simpler, especially when error is due to first command in piped inputs.
+
+## References 
+Referred text given in challenge
+
+---
+
+# 11. Process substitution for input
+Challenge asks me to compare output of two files
+
+## My solve
+**Flag:** `pwn.college{Yjv6oCbLevjdiSsThk-MSd39jR1.0lNwMDOxwyM3AzNzEzW}`
+
+I realised that I can use < to direct the output of commands as imput files of diff and therefore used it to get the flag.
+`diff <(/challenge/print_decoys) <(/challenge/print_decoys_and_flag)`
+
+## What I learned
+- I learnt that Linux follows the philosophy that "everything is a file"
+- Thus we can create temp files while using commands
+
+## References 
+Referred text given in challenge
+
+---
+
+# 12. Writing to multiple programs
+Challenge asks me to output a command and use that as input in other 2 commands
+
+## My solve
+**Flag:** `pwn.college{wPbQzVLmEQjlrGv1efhXgbevHMC.QXwgDN1wyM3AzNzEzW}`
+
+## What I learned
+- I learnt how to use output as multiple inputes for different commands
+- More use cases of `tee`
+- Also how to use >(command) properly
+
+## References 
+- Referred text given in challenge
+- Also referred to [Unix Shell Redirection Guide](https://web.archive.org/web/20220629044814/http://bencane.com:80/2012/04/16/unix-shell-the-art-of-io-redirection/)
+
+---
+
+# Split-piping stderr and stdout
+Challenge asks me to:
+`
+    /challenge/hack: this produces data on stdout and stderr
+    /challenge/the: you must redirect hack's stderr to this program
+    /challenge/planet: you must redirect hack's stdout to this program
+`
+
+## My solve
+**Flag:** `pwn.college{EPR15L3J7geh_g-lpszje1PSWR8.QXxQDM2wyM3AzNzEzW}`
+
+I tried out mutiple iterations and combination including | and 2> $
+I entered `/challenge/hack > >(/challenge/planet) 2> >(/challenge/the)`
+This one worked by redicted output to `/challenge/planet` and error to `/challenge/the`. It gave me the file.
+
+## What I learned
+- I learnt how to combine everything and set output of a command then seperate `stdout` and `stderr` and use them as input for commands
+
+## References 
+Referred text given in challenge
+
