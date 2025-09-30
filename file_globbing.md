@@ -152,15 +152,16 @@ Referred text in challenge
 
 ---
 
-# Multiple options for tab completion
+# 9. Multiple options for tab completion
 The challenge asks me to use tab and figure out flag when there are multiple options
 
 ## My solve
-**Flag:** INCOMPLETW
+**Flag:** `pwn.college{gwFLCfna6beCax5dy4wPobXvKF5.0lN0EzNxwyM3AzNzEzW}`
 
 - At first I kept running path which didn't work for any file
-- Then I used `cat` with `/challenge/files/pw` and pressed tab
-- I tried all the files that came up with two tab presses but none of them included the flag. 
+- I tried all the files that came up with two tab presses but none of them included the flag.
+- then i tried reading all those files using cat which still didn't work
+- then I tried the cat command with `cat /challenge/files/p[tab]` which gave me /challenge/files/pwncollege-flag which I cat'd and got the flag.  
 
 ## What I learned
 - I learnt multiple autocompletes can tab completion
@@ -170,7 +171,7 @@ I referred text given in challenge
 
 ---
 
-# Tab completion on commands
+# 10. Tab completion on commands
 Challenge asks me to enter command `pwncollege` and press TAB to autocomplete it
 
 ## My solve
