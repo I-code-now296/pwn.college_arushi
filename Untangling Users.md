@@ -57,12 +57,14 @@ referred to given text
 This challenge explains the modern and preferred method of **elevated access** using the **`sudo` (substitute user do)** utility. Unlike `su`, which requires a password to launch a new root shell, `sudo` defaults to running a *single command* as root and relies on policy files (`/etc/sudoers`) to determine if the currently logged-in user is authorized. This allows for fine-grained, auditable, and password-less (for the root account) system administration.
 
 ### Solve
-**Flag:** NOT OBTAINED
+**Flag:** pwn.college{EpI-0Y5yd-EUSs6T_1m4eqXaBK6.QX4UDN1wyM3AzNzEzW}
 
 Did `sudo /challenge/run`
 `sudo cat flag`
 etc
-got root access but didn't know how to access flag. 
+got root access but didn't know how to access flag.
+so I did ls and tried out all the files with flag in it. 
+`sudo cat not-the-flag`
 
 ### New Learnings
 sudo (substitute user, do), is a common method for system administration and privilege escalation.
