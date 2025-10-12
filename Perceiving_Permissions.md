@@ -1,4 +1,4 @@
-# Linux Luminarium: Permissions
+# Linux Luminarium: Perceiving Permissions
 
 ## 1. Changing File Ownership
 This challenge focuses on the concept of **file ownership** and its role in Linux access control. Files are owned by a single user, and changing this owner using the **`chown`** command is a core method of transferring or seizing control over a file's access rights. Normally restricted to the root user, this level demonstrates how changing a file's owner to the current user can bypass permission restrictions and grant full control.
